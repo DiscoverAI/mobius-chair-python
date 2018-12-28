@@ -6,10 +6,9 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
-metron = {editable = true, path = "."}
 
 [requires]
 python_version = "3.6"
 
 [packages]
-"e1839a8" = {path = ".", editable = true}
+metron = {path = ".", editable = true}

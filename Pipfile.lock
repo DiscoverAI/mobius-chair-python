@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c73134e4263cd8db4db340b5eaf9188d86d058f385157e2cf0ba3080f774e7bf"
+            "sha256": "ec1fe28fbd2f64a0d0f698357252a224a5e2107c3529aa78b9e627fedbd980aa"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,7 +16,7 @@
         ]
     },
     "default": {
-        "e1839a8": {
+        "metron": {
             "editable": true,
             "path": "."
         }
@@ -35,10 +35,6 @@
                 "sha256:ca4be454458f9dec299268d472aaa5a11f67a4ff70093396e1ceae9c76cf4bbb"
             ],
             "version": "==18.2.0"
-        },
-        "metron": {
-            "editable": true,
-            "path": "."
         },
         "more-itertools": {
             "hashes": [
