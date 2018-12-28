@@ -1,9 +1,10 @@
 ### metron
 
- >Metron is one of the good New Gods of New Genesis lead by Highfather.
- >He is the God of Knowledge and travels space and time in his Mobius Chair
- >as part of an endless quest to know everything.
- >--http://dc.wikia.com/wiki/Metron
+ > Metron is one of the good New Gods of New Genesis lead by Highfather.
+ > He is the God of Knowledge and travels space and time in his Mobius Chair
+ > as part of an endless quest to know everything.
+ >
+ > --http://dc.wikia.com/wiki/Metron
 
 An application using [mobius-chair](https://github.com/meandor/mobius-chair)
 writes versioned datasets to a filesystem in the following pattern.
