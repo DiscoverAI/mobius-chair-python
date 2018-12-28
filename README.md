@@ -1,5 +1,7 @@
 ### metron
 
+[![CircleCI](https://circleci.com/gh/DiscoverAI/metron.svg?style=svg)](https://circleci.com/gh/DiscoverAI/metron)
+
  > Metron is one of the good New Gods of New Genesis lead by Highfather.
  > He is the God of Knowledge and travels space and time in his Mobius Chair
  > as part of an endless quest to know everything.
