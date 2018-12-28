@@ -1,4 +1,4 @@
-### metron
+## metron
 
 [![CircleCI](https://circleci.com/gh/DiscoverAI/metron.svg?style=svg)](https://circleci.com/gh/DiscoverAI/metron)
 
