@@ -25,13 +25,13 @@ For example, in the following structure,
     .
     ├── ...
     ├── zipper
-    │   ├── 0001                                     # version of zipper/your data transformation
+    │   ├── 0001                                # version of zipper/your data transformation
     │   ├──── 0001                              # First generation
     │   ├────── dataset.part.1.csv
     │   ├──── 0002                              # second generation (same transformation, new input data)
     │   ├────── dataset.part.1.csv
     │   ├────── _SUCCESS
-    │   ├── 0002                                     # second version of transformation
+    │   ├── 0002                                # second version of transformation
     └── ...
 
 Metron is the python client for this versioning scheme, allowing you to easily
