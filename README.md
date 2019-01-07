@@ -1,6 +1,6 @@
-## mobius-chair
+## mobius-chair (Python)
 
-[![CircleCI](https://circleci.com/gh/DiscoverAI/metron.svg?style=svg)](https://circleci.com/gh/DiscoverAI/metron)
+[![CircleCI](https://circleci.com/gh/DiscoverAI/mobius-chair-python.svg?style=svg)](https://circleci.com/gh/DiscoverAI/mobius-chair-python)
 
 > The Mobius Chair is Metron's technological masterpiece and allows him to cross space-time and interdimensional barriers.
 >
