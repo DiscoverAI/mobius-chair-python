@@ -1,14 +1,12 @@
-## metron
+## mobius-chair
 
 [![CircleCI](https://circleci.com/gh/DiscoverAI/metron.svg?style=svg)](https://circleci.com/gh/DiscoverAI/metron)
 
- > Metron is one of the good New Gods of New Genesis lead by Highfather.
- > He is the God of Knowledge and travels space and time in his Mobius Chair
- > as part of an endless quest to know everything.
- >
- > --http://dc.wikia.com/wiki/Metron
+> The Mobius Chair is Metron's technological masterpiece and allows him to cross space-time and interdimensional barriers.
+>
+> -- http://dc.wikia.com/wiki/Mobius_Chair
 
-An application using [mobius-chair](https://github.com/meandor/mobius-chair)
+An application using this versioning schema
 writes versioned datasets to a filesystem in the following pattern.
 
  - The base folder name will be the name of the transformation
@@ -33,9 +31,6 @@ For example, in the following structure,
     │   ├────── _SUCCESS
     │   ├── 0002                                # second version of transformation
     └── ...
-
-Metron is the python client for this versioning scheme, allowing you to easily
-find the latest, unprocessed version in a mobius-chair generated folder.
 
 ## Install
 Make sure you have pipenv and python 3.6.0 installed.
