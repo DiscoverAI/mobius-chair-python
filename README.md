@@ -1,4 +1,4 @@
-## mobius-chair (Python)
+# Mobius Chair (Python)
 
 [![CircleCI](https://circleci.com/gh/DiscoverAI/mobius-chair-python.svg?style=svg)](https://circleci.com/gh/DiscoverAI/mobius-chair-python)
 
@@ -6,8 +6,7 @@
 >
 > -- http://dc.wikia.com/wiki/Mobius_Chair
 
-An application using this versioning schema
-writes versioned datasets to a filesystem in the following pattern.
+A Python library for versioning data (datasets, models) on an HDFS. This can be used by Python applications.
 
  - The base folder name will be the name of the transformation
  - This folder contains numbered folders that denote the version of the transformation
@@ -33,7 +32,7 @@ For example, in the following structure,
     └── ...
 
 ## Install
-Make sure you have pipenv and python 3.6.0 installed.
+Make sure you have pipenv and python 3.6 installed.
 
 Then just run:
 ```bash
@@ -44,10 +43,4 @@ pipenv install --dev
 Test it with:
 ```bash
 pipenv run pytest
-```
-
-## Run
-Run it with:
-```bash
-pipenv run monty/main.py
 ```

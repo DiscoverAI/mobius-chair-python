@@ -28,5 +28,6 @@ class LocalFileSystem(FileSystem):
 class HadoopFileSystem(FileSystem):
     pass
 
+
 class AmazonS3FileSystem(FileSystem):
     pass

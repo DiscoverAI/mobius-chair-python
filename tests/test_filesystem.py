@@ -1,4 +1,4 @@
-from metron.filesystem import *
+from mobius_chair.filesystem import LocalFileSystem
 
 
 def test_local_filesystem():

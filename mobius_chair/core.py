@@ -1,7 +1,7 @@
 import os
 
 
-class Metron:
+class MobiusChair:
     def __init__(self, filesystem, base_path):
         self.filesystem = filesystem
         self.base_path = base_path

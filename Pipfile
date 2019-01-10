@@ -3,12 +3,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[dev-packages]
-pytest = "*"
-pytest-mock = "*"
-
 [requires]
 python_version = "3.6"
 
 [packages]
-metron = {path = ".", editable = true}
+mobius_chair = {path = ".", editable = true}
+
+[dev-packages]
+pytest = "*"
+pytest-mock = "*"
