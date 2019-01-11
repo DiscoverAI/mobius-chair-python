@@ -1,30 +1,40 @@
 import os
+import re
+import logging
 
 
-class MobiusChair:
-    def __init__(self, filesystem, base_path):
-        self.filesystem = filesystem
-        self.base_path = base_path
+def common_number_format(integer):
+    return '{:0>4d}'.format(integer)
 
-    def get_dataset_generations(self, transformation_version):
-        path_to_transformation_version = os.path.join(self.base_path, transformation_version)
-        return sorted(self.filesystem.list_directories(path_to_transformation_version), reverse=True)
 
-    def generation_already_processed(self, path_to_generation):
-        return self.filesystem.file_exists(path_to_generation + "/_SUCCESS")
+def output_path(fs, base_path, name, version):
+    job_output_path = base_path + fs.pathsep + name + fs.pathsep + common_number_format(int(version))
+    logging.warning("JOB OUTPUT PATH" + base_path)
+    if create_if_not_available(fs, job_output_path):
+        logging.info("Output folder was created")
+    generation = next_generation(fs, base_path)
+    return job_output_path + fs.pathsep + generation
 
-    def get_all_files_except_success_file(self, path_to_generation):
-        return [f for f in self.filesystem.get_all_files(path_to_generation) if not "_SUCCESS" in f]
 
-    def find_latest(self, transformation_version):
-        for gen in self.get_dataset_generations(transformation_version):
-            path_to_generation = os.path.join(self.base_path, transformation_version, gen)
-            if not self.generation_already_processed(path_to_generation):
-                return self.get_all_files_except_success_file(path_to_generation)
+def latest_generation(fs, base_path):
+    generations = [path for path in fs.ls(base_path) if os.path.isdir(path)]
+    generations = [path for path in generations if re.match('^\\d+$', os.path.basename(path))]
+    generations = [int(os.path.basename(path)) for path in generations]
+    return common_number_format(max(generations)) if len(generations) > 0 \
+        else logging.warning("Did not find latest generation")
 
-    def get_latest_dataset(self):
-        transformation_versions = sorted(self.filesystem.list_directories(self.base_path), reverse=True)
-        for v in transformation_versions:
-            latest = self.find_latest(v)
-            if latest:
-                return latest
+
+def next_generation(fs, base_path):
+    current_generation = latest_generation(fs, base_path)
+    return common_number_format(int(current_generation) + 1 if current_generation is not None else 1)
+
+
+def clean_up_generations(fs_uri, base_path, num_to_keep):
+    pass
+
+
+def create_if_not_available(fs, path):
+    if not fs.exists(path):
+        fs.mkdir(path, create_parents=True)
+        return True
+    return False
