@@ -44,3 +44,33 @@ Test it with:
 ```bash
 pipenv run pytest
 ```
+Automated tests only run against a local filesystem.
+
+## Connecting to hdfs
+
+In function calls to the library, mobius-chair expects
+a file system object.
+
+This object has to support
+
+    isdir(path)
+    delete(path)
+    ls(path)
+    pathsep
+    mkdir(path, create_parents=True)
+
+The library was designed to use a filesystem object
+that conforms to
+[the abstraction in the `pyarrow` library](https://github.com/apache/arrow/blob/9178ad8c3c9ea371c3b7edb3fcee3073f5082bdc/python/pyarrow/filesystem.py#L29).
+So, you can set up a hdfs cluster connection as described [here](https://arrow.apache.org/docs/python/filesystems.html)
+
+```python
+import mobius_chair.core as mc
+fs = pyarrow.hdfs.connect(host, port, user=user, kerb_ticket=ticket_cache_path,
+                driver='libhdfs3')
+# or
+fs = pyarrow.LocalFileSystem()
+fs.delete = lambda x: shutil.rmtree(x)
+
+mc.output_path(fs, "/test", "my-app", version=1)
+```
