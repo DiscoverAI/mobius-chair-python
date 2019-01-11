@@ -59,8 +59,7 @@ This object has to support
     pathsep
     mkdir(path, create_parents=True)
 
-The library was designed to use a filesystem object
-that conforms to
+The library was designed to use a filesystem object that conforms to
 [the abstraction in the `pyarrow` library](https://github.com/apache/arrow/blob/9178ad8c3c9ea371c3b7edb3fcee3073f5082bdc/python/pyarrow/filesystem.py#L29).
 So, you can set up a hdfs cluster connection as described [here](https://arrow.apache.org/docs/python/filesystems.html)
 
