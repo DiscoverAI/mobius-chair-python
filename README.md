@@ -11,7 +11,7 @@ A Python library for versioning data (datasets, models) on a Filesystem. This ca
 ## How it works
 
  <p align="center">
-  <img src="https://github.com/DiscoverAI/mobius-chair-python/raw/master/docu/mobius_chair_versioning.png" width="500">
+  <img src="https://github.com/DiscoverAI/mobius-chair-python/raw/master/docu/mobius_chair_versioning.png">
 </p>
 
 In detail
