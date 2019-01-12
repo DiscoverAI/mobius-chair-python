@@ -6,8 +6,15 @@
 >
 > -- http://dc.wikia.com/wiki/Mobius_Chair
 
-A Python library for versioning data (datasets, models) on an HDFS. This can be used by Python applications.
+A Python library for versioning data (datasets, models) on a Filesystem. This can be used by Python applications.
 
+## How it works
+
+ <p align="center">
+  <img src="https://github.com/DiscoverAI/mobius-chair-python/raw/master/docu/mobius_chair_versioning.png" width="500">
+</p>
+
+In detail
  - The base folder name will be the name of the transformation
  - This folder contains numbered folders that denote the version of the transformation
  - each of those folders contains numbered folders where the number stands
