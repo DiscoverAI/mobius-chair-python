@@ -31,22 +31,7 @@ For example, in the following structure,
     │   ├── 0002                                # second version of transformation
     └── ...
 
-## Install
-Make sure you have pipenv and python 3.6 installed.
-
-Then just run:
-```bash
-pipenv install --dev
-```
-
-## Test
-Test it with:
-```bash
-pipenv run pytest
-```
-Automated tests only run against a local filesystem.
-
-## Connecting to hdfs
+## Connecting to a filesystem
 
 In function calls to the library, mobius-chair expects
 a file system object.
@@ -61,15 +46,41 @@ This object has to support
 
 The library was designed to use a filesystem object that conforms to
 [the abstraction in the `pyarrow` library](https://github.com/apache/arrow/blob/9178ad8c3c9ea371c3b7edb3fcee3073f5082bdc/python/pyarrow/filesystem.py#L29).
-So, you can set up a hdfs cluster connection as described [here](https://arrow.apache.org/docs/python/filesystems.html)
+This means it supports HDFS out of the box.
 
-```python
-import mobius_chair.core as mc
-fs = pyarrow.hdfs.connect(host, port, user=user, kerb_ticket=ticket_cache_path,
-                driver='libhdfs3')
-# or
-fs = pyarrow.LocalFileSystem()
-fs.delete = lambda x: shutil.rmtree(x)
 
-mc.output_path(fs, "/test", "my-app", version=1)
+## Try it out
+
+Warning: pyarrow uses hadoop native libraries.
+On unix systems they ship with a hadoop distribution,
+on mac you need to [build hadoop from source](https://medium.com/@faizanahemad/hadoop-native-libraries-installation-on-mac-osx-d8338a6923db)
+
+- Set up an hdfs as described [here](https://hadoop.apache.org/docs/r3.0.3/hadoop-project-dist/hadoop-common/SingleCluster.html)
+- Install mobius_chair
+  - (not ready yet) from pypi: ` pip install mobius_chair`)
+  - from sources: python setup.py install --prefix=$HOME/.local
+- Start versioning:
+
+```python3
+>>> import pyarrow as pa
+>>> import mobius_chair.core as mc
+>>> fs = pa.hdfs.connect("localhost", 9000)
+>>> mc.output_path(fs, "/test", "zipper", 1)
+﻿WARNING:root:Did not find latest generation
+'/test/zipper/0001/0001'
 ```
+
+## Dependencies
+Make sure you have pipenv and python 3.6 installed.
+
+Then just run:
+```bash
+pipenv install --dev
+```
+
+## Test
+Test it with:
+```bash
+pipenv run pytest
+```
+Automated tests only run against a local filesystem.

@@ -1,22 +1,6 @@
-import os
 import re
 import logging
-
-version_format = "^.*/\\d{4}$"
-
-
-def common_number_format(integer):
-    return '{:0>4d}'.format(integer)
-
-
-def sort_by_generation(paths):
-    return sorted(paths, key=lambda path: int(os.path.basename(path)))
-
-
-def get_generations(fs, base_path):
-    generations = [path for path in fs.ls(base_path) if fs.isdir(path)]
-    generations = [path for path in generations if re.match('^.*/\\d{4}$', path)]
-    return generations
+from mobius_chair.utility import *
 
 
 def output_path(fs, base_path, name, version):

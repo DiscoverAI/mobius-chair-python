@@ -1,29 +1,17 @@
-import mobius_chair.core as mc
-from pyarrow import LocalFileSystem
-import os
-import logging
-import shutil
-
-test_fs = LocalFileSystem()
-# pyarrow LocalFileSystem does not implement delete
-# but HadoopFileSystem, the actual implementation you will be working with, does.
-test_fs.delete = lambda x: shutil.rmtree(x)
-
-fs_path = os.path.join(os.getcwd(), "test-resources/filesystem")
-zipper_base_path = fs_path + "/" + "zipper"
-logging.warning(zipper_base_path)
+import mobius_chair.writer as mc
+from tests.testutils import *
 
 
 def test_get_latest_generation():
     latest_gen = mc.latest_generation(test_fs, zipper_base_path + "/0001")
-    assert latest_gen == "0010"
+    assert latest_gen == "0012"
     latest_gen = mc.latest_generation(test_fs, zipper_base_path + "/0002")
     assert latest_gen == "0002"
 
 
 def test_next_generation():
     next_gen = mc.next_generation(test_fs, zipper_base_path + "/0001")
-    assert next_gen == "0011"
+    assert next_gen == "0013"
     next_gen = mc.next_generation(test_fs, zipper_base_path + "/0002")
     assert next_gen == "0003"
     next_gen = mc.next_generation(test_fs, zipper_base_path + "/0003")
