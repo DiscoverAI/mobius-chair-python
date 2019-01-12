@@ -11,7 +11,7 @@ A Python library for versioning data (datasets, models) on a Filesystem. This ca
 ## How it works
 
  <p align="center">
-  <img src="https://github.com/DiscoverAI/mobius-chair-python/raw/master/docu/mobius_chair_versioning.png" width="500">
+  <img src="https://github.com/DiscoverAI/mobius-chair-python/raw/master/docu/mobius_chair_versioning.png">
 </p>
 
 In detail
@@ -65,7 +65,7 @@ on mac you need to [build hadoop from source](https://medium.com/@faizanahemad/h
 - Set up an hdfs as described [here](https://hadoop.apache.org/docs/r3.0.3/hadoop-project-dist/hadoop-common/SingleCluster.html)
 - Install mobius_chair
   - (not ready yet) from pypi: ` pip install mobius_chair`)
-  - from sources: python setup.py install --prefix=$HOME/.local
+  - from sources: `python setup.py install`
 - Start versioning:
 
 ```python3
