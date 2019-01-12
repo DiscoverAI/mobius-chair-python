@@ -1,11 +1,10 @@
-import re
 import logging
 from mobius_chair.utility import *
 
 
 def output_path(fs, base_path, name, version):
     job_output_path = base_path + fs.pathsep + name + fs.pathsep + common_number_format(int(version))
-    if create_if_not_available(fs, job_output_path):
+    if _create_if_not_available(fs, job_output_path):
         logging.info("Output folder was created")
     generation = next_generation(fs, base_path)
     return job_output_path + fs.pathsep + generation
@@ -29,7 +28,7 @@ def clean_up_generations(fs, base_path, num_to_keep):
         fs.delete(path)
 
 
-def create_if_not_available(fs, path):
+def _create_if_not_available(fs, path):
     if not fs.exists(path):
         fs.mkdir(path, create_parents=True)
         return True

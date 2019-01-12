@@ -1,5 +1,6 @@
 import os
 import re
+
 version_format = "^.*/\\d{4}$"
 
 
@@ -9,7 +10,7 @@ def common_number_format(integer):
 
 def get_generations(fs, base_path):
     generations = [path for path in fs.ls(base_path) if fs.isdir(path)]
-    generations = [path for path in generations if re.match('^.*/\\d{4}$', path)]
+    generations = [path for path in generations if re.match(version_format, path)]
     return generations
 
 

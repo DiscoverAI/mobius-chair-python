@@ -20,10 +20,10 @@ def test_next_generation():
 
 def test_create_if_not_available():
     some_dir = os.path.join(os.getcwd(), "test-dir")
-    was_created = mc.create_if_not_available(test_fs, some_dir)
+    was_created = mc._create_if_not_available(test_fs, some_dir)
     assert was_created
     os.rmdir(some_dir)
-    was_created = mc.create_if_not_available(test_fs, zipper_base_path)
+    was_created = mc._create_if_not_available(test_fs, zipper_base_path)
     assert not was_created
 
 

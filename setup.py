@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="mobius_chair",
     version="0.0.1",
-    author="Falco Winkler",
+    author="Falco Winkler, Daniel Schruhl",
     author_email="falcowinkler@icloud.com",
     description="Library for managing versions of datasets or models.",
     long_description=long_description,
