@@ -1,16 +1,16 @@
 import os
 import re
 
-version_format = "^.*/\\d{4}$"
+version_format = "^\d{4}$"
 
 
 def common_number_format(integer):
     return '{:0>4d}'.format(integer)
 
 
-def get_generations(fs, base_path):
-    generations = [path for path in fs.ls(base_path) if fs.isdir(path)]
-    generations = [path for path in generations if re.match(version_format, path)]
+def get_generations(fs, path_to_version):
+    generations = [filename for filename in fs.list(path_to_version) if fs.status(path_to_version + "/" + filename).type == "DIRECTORY"]
+    generations = [path_to_version + "/" + filename for filename in generations if re.match(version_format, filename)]
     return generations
 
 

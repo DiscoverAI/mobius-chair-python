@@ -8,8 +8,8 @@ python_version = "3.6"
 
 [packages]
 mobius_chair = {path = ".", editable = true}
+hdfs = "*"
 
 [dev-packages]
-pyarrow = "*"
 pytest = "*"
 pytest-mock = "*"
