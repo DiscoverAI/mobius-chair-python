@@ -1,0 +1,23 @@
+containers:
+  integration-test-env:
+    image: falcowinkler/hadoop-docker-healthcheck
+    ports:
+      - local: 50070
+        container: 50070
+  mobius-chair:
+    image: falcowinkler/mobius-chair-python
+    volumes:
+      - local: .
+        container: /opt/mobius-chair-python
+        options: cached
+    environment:
+      BACKEND: http://integration-test-env:50070
+
+tasks:
+  integration-test:
+    description: Run the integration tests.
+    run:
+      container: mobius-chair
+      command: pipenv run integrationtest
+    dependencies:
+      - integration-test-env

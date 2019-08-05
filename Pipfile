@@ -13,3 +13,6 @@ hdfs = "*"
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
+
+[scripts]
+integrationtest = "python3 verify_with_hdfs.py"

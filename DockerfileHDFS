@@ -1,0 +1,2 @@
+FROM mdouchement/hdfs
+HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=10 CMD ["curl", "localhost:50070"]

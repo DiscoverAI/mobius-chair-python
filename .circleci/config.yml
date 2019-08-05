@@ -16,11 +16,15 @@ jobs:
     - run:
         name: Install dependencies
         command: pipenv sync --dev
+    - integrationtest:
+        name: Integration test
+        command: ./batect integration-test
     - save_cache:
         key: cache-{{ checksum "Pipfile.lock" }}
         paths:
         - ~/.local
         - ~/.cache
+        - ~/.batect
 
     - run:
         name: run tests
