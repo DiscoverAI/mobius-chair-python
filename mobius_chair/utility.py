@@ -9,7 +9,9 @@ def common_number_format(integer):
 
 
 def get_generations(fs, path_to_version):
-    generations = [filename for filename in fs.list(path_to_version) if fs.status(path_to_version + "/" + filename).type == "DIRECTORY"]
+    dir_contents = fs.list(path_to_version)
+    generations = [filename for filename in dir_contents if
+                   fs.status(path_to_version + "/" + filename)['type'] == "DIRECTORY"]
     generations = [path_to_version + "/" + filename for filename in generations if re.match(version_format, filename)]
     return generations
 

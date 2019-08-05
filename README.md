@@ -40,27 +40,20 @@ For example, in the following structure,
 
 ## Connecting to a filesystem
 
-In function calls to the library, mobius-chair expects
-a file system object.
+Mobius char supports only WebHDFS, for now.
+In theory it supports every file system that can conform to that same
+interface:
 
-This object has to support
+    delete(self, hdfs_path, recursive=False, skip_trash=True)
+    list(self, hdfs_path, status=False)
+    status(self, hdfs_path, strict=True)
+    makedirs(self, hdfs_path, permission=None)
+    walk(self, hdfs_path, depth=0, status=False, ignore_missing=False)
 
-    isdir(path)
-    delete(path)
-    ls(path)
-    pathsep
-    mkdir(path, create_parents=True)
-
-The library was designed to use a filesystem object that conforms to
-[the abstraction in the `pyarrow` library](https://github.com/apache/arrow/blob/9178ad8c3c9ea371c3b7edb3fcee3073f5082bdc/python/pyarrow/filesystem.py#L29).
-This means it supports HDFS out of the box.
-
+So if you write your own class and adapt these methods to your fs,
+it can be supported as well.
 
 ## Try it out
-
-Warning: pyarrow uses hadoop native libraries.
-On unix systems they ship with a hadoop distribution,
-on mac you need to [build hadoop from source](https://medium.com/@faizanahemad/hadoop-native-libraries-installation-on-mac-osx-d8338a6923db)
 
 - Set up an hdfs as described [here](https://hadoop.apache.org/docs/r3.0.3/hadoop-project-dist/hadoop-common/SingleCluster.html)
 - Install mobius_chair
@@ -69,12 +62,12 @@ on mac you need to [build hadoop from source](https://medium.com/@faizanahemad/h
 - Start versioning:
 
 ```python3
->>> import pyarrow as pa
->>> import mobius_chair.core as mc
->>> fs = pa.hdfs.connect("localhost", 9000)
->>> mc.output_path(fs, "/test", "zipper", 1)
-﻿WARNING:root:Did not find latest generation
-'/test/zipper/0001/0001'
+>>> from hdfs import InsecureClient
+>>> client = InsecureClient('http://localhost:50070', root='/')
+>>> import mobius_chair.writer as mw
+>>> mw.output_path(fs=client, base_path="", name="my_app", version=1)
+WARNING:root:Did not find latest generation
+'/my_app/0001/0001'
 ```
 
 ## Dependencies
@@ -90,4 +83,5 @@ Test it with:
 ```bash
 pipenv run pytest
 ```
-Automated tests only run against a local filesystem.
+
+Unit tests only run against a local filesystem.

@@ -3,11 +3,6 @@ import shutil
 import os
 
 
-class MockStatus:
-    def __init__(self, type):
-        self.type = type
-
-
 class MockClient(Client):
     def __init__(self):
         super().__init__("")
@@ -22,9 +17,9 @@ class MockClient(Client):
         if not os.path.exists(hdfs_path) and strict == False:
             return None
         elif os.path.isdir(hdfs_path):
-            return MockStatus("DIRECTORY")
+            return {'type': "DIRECTORY"}
         else:
-            return MockStatus("FILE")
+            return {'type': "FILE"}
 
     def makedirs(self, hdfs_path, permission=None):
         os.makedirs(hdfs_path)
